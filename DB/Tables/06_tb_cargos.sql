@@ -1,0 +1,14 @@
+CREATE TABLE TB_CARGO (
+	ID_CARGO INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	NOME_CARGO VARCHAR(100) NOT NULL
+)
+
+INSERT INTO TB_CARGO (NOME_CARGO) VALUES
+('Arquiteto Soluções'),
+('Dev Sênior'),
+('Designer UX'),
+('Engenheiro Dados'),
+('Engenheiro IoT'),
+('Dev Frontend');
+
+SELECT *FROM TB_CARGO;

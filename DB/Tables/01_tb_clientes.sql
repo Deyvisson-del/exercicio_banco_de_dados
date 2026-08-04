@@ -2,15 +2,18 @@
 -- ================{TABELA_CLIENTES}====================
 -- =====================================================
 CREATE TABLE TB_CLIENTES (
-	ID SERIAL PRIMARY KEY,
+	ID_Cliente SERIAL PRIMARY KEY,
 	NOME_CLIENTE VARCHAR(100) NOT NULL,
 	CNPJ_CLIENTE VARCHAR(18) NOT NULL UNIQUE,
 	DATA_CRIACAO TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	DATA_MODIFICACAO TIMESTAMP,
+	DATA_MODIFICACAO TIMESTAMP
 );
 -- =====================================================
 -- =================={FIM_Tabela}=======================
 -- =====================================================
+-- Garantindo a unicidade do cnpj, atráves de um indexador
+CREATE UNIQUE INDEX idx_clientes_cnpj
+ON tb_clientes(LOWER(TRIM(CNPJ_CLIENTE)));
 
 -- //////////////////////////////////////////////////////
 -- ================{TRIGGER_FUNCTION}====================
@@ -36,12 +39,11 @@ EXECUTE FUNCTION FN_UPDATE_DT_MODIFICACAO_CLIENTE ();
 -- ================{PROCEDURE}====================
 --////////////////////////////////////////////////
 CREATE OR REPLACE PROCEDURE PR_CRIAR_CLIENTE (
-	NOME_CLIENTE VARCHAR,
-	CNPJ_CLIENTE VARCHAR,
-	SEGMENTO_CLIENTE INT DEFAULT NULL
+	NOME VARCHAR,
+	CNPJ VARCHAR
 ) LANGUAGE PLPGSQL AS $$
 	BEGIN
-		INSERT INTO TB_CLIENTES(NOME , CNPJ, SEGMENTO ) VALUES (NOME_CLIENTE::TEXT, CNPJ_CLIENTE::TEXT, SEGMENTO_CLIENTE);
+		INSERT INTO TB_CLIENTES(NOME_CLIENTE , CNPJ_CLIENTE ) VALUES (NOME::TEXT, CNPJ::TEXT);
 	END;
 	$$;
 --////////////////////////////////////////////////
@@ -77,5 +79,4 @@ CREATE VIEW VW_CLI_SEG AS
 SELECT * FROM VW_CLI_SEG;
 -- ======================={FIM_Views}=================
 
-SELECT * FROM tb_clientes;
-select * from tb_segmentos;
+ALTER TABLE TB_CLIENTES RENAME COLUMN ID TO ID_CLIENTE

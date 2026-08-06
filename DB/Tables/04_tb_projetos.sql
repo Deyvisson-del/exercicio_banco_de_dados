@@ -16,8 +16,16 @@ CREATE TABLE TB_PROJETOS(
 	CONSTRAINT FK_RESPONSAVEL_PROJETO FOREIGN KEY (RESPOSAVEL_ID)REFERENCES TB_FUNCIONARIO(ID_FUNCIONARIO)
 );
 
-insert into tb_projetos(cliente_id,responsavel_id,nome_projeto,status_projeto) values 
-(1,1,'Erp Financeiro',3);
-
-
-SELECT * FROM tb_projetos;
+create or replace view vw_projetos as 
+select 
+	tp.id_projeto ,
+	tc.nome_cliente as "Cliente",
+	tf.nome_funcionario as "Responsável",
+	nome_projeto as "Nome Projeto",
+	tsp.nome_status as "Status",
+	data_criacao_projeto as "Data de Criação",
+	data_entrega_projeto as "Data de Entrega"
+from tb_projetos tp
+inner join tb_clientes tc on tc.id_cliente = tp.cliente_id 
+inner join tb_funcionarios tf on tf.id_funcionario = tp.responsavel_id 
+inner join tb_status_projetos tsp on tsp.id_status = tp.status_projeto 

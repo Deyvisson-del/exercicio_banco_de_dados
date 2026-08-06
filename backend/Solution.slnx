@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Exercicio.Application/Exercicio.Application.csproj" Id="1828fdac-5e6a-4c9f-ba99-6234325bc401" />
+  <Project Path="Exercicio.Domain/Exercicio.Domain.csproj" />
+  <Project Path="Exercicio.Infra.Data/Exercicio.Infra.Data.csproj" Id="6f1db19a-8592-4ff7-9441-206160df626e" />
+  <Project Path="Exercicio.Infra.Ioc/Exercicio.Infra.Ioc.csproj" Id="7479e69c-c5a1-4b2a-aade-e026c43eed08" />
+</Solution>

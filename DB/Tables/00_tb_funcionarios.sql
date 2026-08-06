@@ -15,7 +15,9 @@ CREATE TABLE TB_FUNCIONARIOS (
 )
 
 INSERT INTO TB_FUNCIONARIOS(NOME_FUNCIONARIO,EMAIL_FUNCIONARIO,CARGO_ID,CATEGORIA_ID,STATUS_ID,SALARIO_FUNCIONARIO) VALUES
-('Ana Oliveira','ana@tech.com',1, 1,1, 14800),
+('João Silva','joao@tech.com',2,3 ,1, 1600)
+
+
 ('Pedro Costa', 'pedro@tech.com',2,1,1, 12000),
 ('Carla Mendes', 'carla@tech.com',3,1,1, 9000),
 ('Mariana Silva', 'mariana@tech.com',4,1,1, 16500),
@@ -25,16 +27,19 @@ INSERT INTO TB_FUNCIONARIOS(NOME_FUNCIONARIO,EMAIL_FUNCIONARIO,CARGO_ID,CATEGORI
 SELECT * FROM VW_FUNCIONARIOS
 
 -- ======================{Views}============================
-CREATE OR REPLACE VIEW VW_funcionarios as
-	SELECT 
-		F.NOME_FUNCIONARIO AS "Funcionário",
-		F.EMAIL_FUNCIONARIO AS "Email",
-		C.NOME_CARGO AS "Cargo",
-		T.NOME_CATEGORIA AS "Senhoridade",
-		S.NOME_STATUS AS "Status",
-		F.SALARIO_FUNCIONARIO AS "Remuneração"
-	FROM TB_FUNCIONARIOS F
-	INNER JOIN TB_CARGOS C ON F.CARGO_ID = C.ID_CARGO   
-	INNER JOIN TB_CATEGORIA T ON F.CATEGORIA_ID = T.ID_CATEGORIA
-	INNER JOIN TB_STATUS_FUNCIONARIOS S ON F.STATUS_ID = S.ID_STATUS;
--- ======================{Fim}============================
+create or replace view vw_funcionarios as 
+select 
+tf.id_funcionario as "ID"  ,
+tf.nome_funcionario AS "Funcionário", 
+tf.email_funcionario as "E-mail",
+tc.nome_cargo as "Cargo",
+tc2.nome_categoria as "Categoria",
+tsf.nome_status as "Status",
+tf.salario_funcionario as "Salário",
+tf.data_criacao_funcionario as "Data Ingresso"
+from tb_funcionarios tf 
+inner join tb_cargos tc on tf.cargo_id = tc.id_cargo  
+inner join tb_categoria tc2 on tf.categoria_id = tc2.id_categoria 
+inner join tb_status_funcionarios tsf  on tf.status_id = tsf.id_status 
+-- ======================{Fim}==============================
+

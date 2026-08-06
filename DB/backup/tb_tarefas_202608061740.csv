@@ -1,0 +1,4 @@
+"id_tarefas","projeto_id","nome_tarefas","descricao_tarefas","requerente_id","funcionario_id","prioridade_id","data_criacao_tarefas","data_modificacao_tarefas","data_finalizacao"
+1,1,Levantamento de Requisitos,"O levantamento de requisitos foi realizado na reunião ás 10:30
+
+",1,7,1,2026-08-05 17:06:35.513,,

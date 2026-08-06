@@ -1,0 +1,8 @@
+"id_funcionario","nome_funcionario","email_funcionario","cargo_id","categoria_id","status_id","salario_funcionario","data_criacao_funcionario","data_modificacao_funcionario"
+1,Ana Oliveira,ana@tech.com,1,1,1,14800.00,2026-08-04 16:48:48.226,
+2,Pedro Costa,pedro@tech.com,2,1,1,12000.00,2026-08-04 16:48:48.226,
+3,Carla Mendes,carla@tech.com,3,1,1,9000.00,2026-08-04 16:48:48.226,
+4,Mariana Silva,mariana@tech.com,4,1,1,16500.00,2026-08-04 16:48:48.226,
+5,Carlos Souza,carlos@tech.com,6,1,1,6000.00,2026-08-04 16:48:48.226,
+6,Fernando Lima,fernando@tech.com,5,1,1,18000.00,2026-08-04 16:48:48.226,
+7,João Silva,joao@tech.com,2,1,1,1600.00,2026-08-05 17:05:43.184,

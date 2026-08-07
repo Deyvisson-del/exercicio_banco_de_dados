@@ -48,3 +48,17 @@ begin
 end;
 $$
 
+create or replace function fn_atualizar_dt_modificacao_tarefas() 
+returns trigger
+language plpgsql
+as $$ 
+begin 
+	new.data_modificacao_tarefas = NOW();
+	RETURN NEW;
+end;
+$$;
+
+create trigger TR_DT_MODIFICACAO_TAREFAS
+before insert on TB_TAREFAS
+for each row 
+execute function fn_atualizar_dt_modificacao_tarefas(); 

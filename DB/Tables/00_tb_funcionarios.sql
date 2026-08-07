@@ -15,9 +15,7 @@ CREATE TABLE TB_FUNCIONARIOS (
 )
 
 INSERT INTO TB_FUNCIONARIOS(NOME_FUNCIONARIO,EMAIL_FUNCIONARIO,CARGO_ID,CATEGORIA_ID,STATUS_ID,SALARIO_FUNCIONARIO) VALUES
-('João Silva','joao@tech.com',2,3 ,1, 1600)
-
-
+('João Silva','joao@tech.com',2,3 ,1, 1600),
 ('Pedro Costa', 'pedro@tech.com',2,1,1, 12000),
 ('Carla Mendes', 'carla@tech.com',3,1,1, 9000),
 ('Mariana Silva', 'mariana@tech.com',4,1,1, 16500),

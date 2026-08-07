@@ -36,7 +36,7 @@ inner join tb_prioridade_tarefas tpt on tt.prioridade_id = tpt.id_prioridade
 inner join tb_status_tarefas tst on tt.status_id = tst.id_status
 
 
-select * from vw_tarefas vt 
+select * from vw_tarefas vt;
  
 
  create or replace procedure PR_CRIAR_TAREFA(ID_P INT, NOME_T VARCHAR, DESCRICAO_T TEXT, CRIADOR_T INT, TECNICO_T INT, PRIORIDADE INT, STATUS INT) 

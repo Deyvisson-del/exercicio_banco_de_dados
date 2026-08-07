@@ -15,9 +15,7 @@ CREATE TABLE TB_FUNCIONARIOS (
 )
 
 INSERT INTO TB_FUNCIONARIOS(NOME_FUNCIONARIO,EMAIL_FUNCIONARIO,CARGO_ID,CATEGORIA_ID,STATUS_ID,SALARIO_FUNCIONARIO) VALUES
-('João Silva','joao@tech.com',2,3 ,1, 1600)
-
-
+('João Silva','joao@tech.com',2,3 ,1, 1600),
 ('Pedro Costa', 'pedro@tech.com',2,1,1, 12000),
 ('Carla Mendes', 'carla@tech.com',3,1,1, 9000),
 ('Mariana Silva', 'mariana@tech.com',4,1,1, 16500),
@@ -43,3 +41,17 @@ inner join tb_categoria tc2 on tf.categoria_id = tc2.id_categoria
 inner join tb_status_funcionarios tsf  on tf.status_id = tsf.id_status 
 -- ======================{Fim}==============================
 
+create or replace function fn_atualizar_dt_modificacao_funcionarios() 
+returns trigger
+language plpgsql
+as $$ 
+begin 
+	new.data_modificacao_funcionarios = NOW();
+	RETURN NEW;
+end;
+$$;
+
+create trigger TR_DT_MODIFICACAO_TAREFAS
+before insert on TB_FUNCIONARIOS
+for each row 
+execute function fn_atualizar_dt_modificacao_funcionarios(); 

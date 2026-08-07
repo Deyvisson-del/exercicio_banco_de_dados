@@ -38,3 +38,13 @@ inner join tb_status_tarefas tst on tt.status_id = tst.id_status
 
 select * from vw_tarefas vt 
  
+
+ create or replace procedure PR_CRIAR_TAREFA(ID_P INT, NOME_T VARCHAR, DESCRICAO_T TEXT, CRIADOR_T INT, TECNICO_T INT, PRIORIDADE INT, STATUS INT) 
+language plpgsql
+as $$ 
+begin 
+	insert into tb_tarefas(projeto_id,nome_tarefas,descricao_tarefas,requerente_id,funcionario_id,prioridade_id,status_id ) 
+	values (ID_P , NOME_T , DESCRICAO_T , CRIADOR_T , TECNICO_T , PRIORIDADE , STATUS );
+end;
+$$
+
